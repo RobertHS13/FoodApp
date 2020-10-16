@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{subtitles.get(segmentId)}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+      <div class="links ion-margin">
+        <p [ngClass]="{'link-bold': segmentId == segmentLogin}" (click)="onLinkClickLoginRegistration(segmentLogin)">Login</p>
+        <p [ngClass]="{'link-bold': segmentId == segmentRegistration}" (click)="onLinkClickLoginRegistration(segmentRegistration)">Registration</p>
+      </div>
+
+      <ion-item lines="full" *ngIf="segmentId == segmentRegistration">
+        <ion-label position="floating">Firts name</ion-label>
+        <ion-input type="text" required [(ngModel)]="user.firstName" name="firstName"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full" *ngIf="segmentId == segmentRegistration">
+        <ion-label position="floating">Last name</ion-label>
+        <ion-input type="text" required [(ngModel)]="user.lastName" name="lastName"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full" *ngIf="segmentId == segmentRegistration">
+        <ion-label position="floating">Phone number</ion-label>
+        <ion-input type="text" required [(ngModel)]="user.phone" name="phoneNumber"></ion-input>
+      </ion-item>
+
+      <!--Registration end-->
+
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" required [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" required [(ngModel)]="user.password" name="password"></ion-input>
+      </ion-item>
+
+       <!--Registration-->
+
+       <ion-item lines="full" *ngIf="segmentId == segmentRegistration">
+        <ion-label position="floating">Confirm password</ion-label>
+        <ion-input type="password" required [(ngModel)]="confirm" name="confirm"></ion-input>
+      </ion-item>
+  
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block" (click)="onBtnClick()">{{btnText.get(segmentId)}}</ion-button>
+        </ion-col>
+      </ion-row>
+  </form>
+</ion-content>
